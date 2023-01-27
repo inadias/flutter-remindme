@@ -77,35 +77,7 @@ class _LoginPageState extends State<LoginPage> {
             SizedBox(height: 20),
             LoginForm(),
             SizedBox(height: 25),
-            DelayedAnimation(
-              delay: 1500,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  shape: StadiumBorder(),
-                  primary: color_green,
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 125,
-                    vertical: 10,
-                  ),
-                ),
-                child: Text(
-                  'Connexion',
-                  style: GoogleFonts.poppins(
-                    color: Colors.white,
-                    fontSize: 15,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => MyApp(),
-                    ),
-                  );
-                },
-              ),
-            ),
+
             DelayedAnimation(
               delay: 1500,
               child: ElevatedButton(
