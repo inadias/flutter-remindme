@@ -12,6 +12,7 @@ class LoginForm extends StatefulWidget {
 class _LoginFormState extends State<LoginForm> {
   var _obscureText = true;
   var _username="";
+  var _password="";
 
   _checkLoginValue(){
     if(_formKey.currentState!.validate()){
@@ -35,8 +36,9 @@ class _LoginFormState extends State<LoginForm> {
           DelayedAnimation(
             delay: 2000,
             child: TextFormField(
+              keyboardType: TextInputType.text,
               decoration: InputDecoration(
-                labelText: 'Your Email',
+                labelText: 'Username',
                 labelStyle: TextStyle(
                   color: Colors.grey[400],
                 ),
@@ -56,7 +58,8 @@ class _LoginFormState extends State<LoginForm> {
           SizedBox(height: 20),
           DelayedAnimation(
             delay: 2500,
-            child: TextField(
+            child: TextFormField(
+              keyboardType: TextInputType.text,
               obscureText: _obscureText,
               decoration: InputDecoration(
                 labelStyle: TextStyle(
@@ -75,6 +78,15 @@ class _LoginFormState extends State<LoginForm> {
                   },
                 ),
               ),
+              validator: (value) {
+                if(value!.isEmpty){
+                  return "Le champs password est vide";
+                }
+                return null;
+              },
+              onSaved: (value) {
+                _password=value!;
+              },
             ),
           ),
           DelayedAnimation(

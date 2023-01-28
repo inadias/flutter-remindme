@@ -66,35 +66,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
               RegisterForm(),
               SizedBox(height: 20),
-              DelayedAnimation(
-                delay: 1500,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    shape: StadiumBorder(),
-                    primary: color_green,
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 125,
-                      vertical: 13,
-                    ),
-                  ),
-                  child: Text(
-                    'Envoyer',
-                    style: GoogleFonts.poppins(
-                      color: Colors.white,
-                      fontSize: 15,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => MyApp(),
-                      ),
-                    );
-                  },
-                ),
-              ),
+
 
             ],
 
