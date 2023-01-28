@@ -40,7 +40,7 @@ class _LoginPageState extends State<LoginPage> {
           children: [
             DelayedAnimation(delay: 500,
                 child: Container(
-                  height: 250,
+                  height: 200,
                   child: Image.asset('images/connexion_logo.png'),
                 )
             ),
@@ -74,9 +74,9 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 )
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 10),
             LoginForm(),
-            SizedBox(height: 25),
+            SizedBox(height: 10),
 
             DelayedAnimation(
               delay: 1500,
@@ -85,15 +85,15 @@ class _LoginPageState extends State<LoginPage> {
                   shape: StadiumBorder(),
                   primary: color_red,
                   padding: EdgeInsets.symmetric(
-                    horizontal: 125,
-                    vertical: 10,
+                    horizontal: 100,
+                    vertical: 8,
                   ),
                 ),
                 child: Text(
                   'Inscription',
                   style: GoogleFonts.poppins(
                     color: Colors.white,
-                    fontSize: 15,
+                    fontSize: 13,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
@@ -105,29 +105,6 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   );
                 },
-              ),
-            ),
-            SizedBox(height: 30),
-            Align(
-              alignment: Alignment.centerRight,
-              child: Padding(
-                padding: EdgeInsets.only(right: 35),
-                child: TextButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  child: DelayedAnimation(
-                    delay: 2800,
-                    child: Text(
-                      "SKIP",
-                      style: GoogleFonts.poppins(
-                        color: color_green,
-                        fontSize: 15,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ),
-                ),
               ),
             ),
           ],

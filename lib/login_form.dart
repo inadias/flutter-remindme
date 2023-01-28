@@ -40,6 +40,7 @@ class _LoginFormState extends State<LoginForm> {
               decoration: InputDecoration(
                 labelText: 'Username',
                 labelStyle: TextStyle(
+                  fontSize: 13,
                   color: Colors.grey[400],
                 ),
               ),
@@ -55,7 +56,7 @@ class _LoginFormState extends State<LoginForm> {
 
             ),
           ),
-          SizedBox(height: 20),
+
           DelayedAnimation(
             delay: 2500,
             child: TextFormField(
@@ -63,6 +64,7 @@ class _LoginFormState extends State<LoginForm> {
               obscureText: _obscureText,
               decoration: InputDecoration(
                 labelStyle: TextStyle(
+                  fontSize: 13,
                   color: Colors.grey[400],
                 ),
                 labelText: 'Password',
@@ -89,6 +91,7 @@ class _LoginFormState extends State<LoginForm> {
               },
             ),
           ),
+          SizedBox(height: 40),
           DelayedAnimation(
             delay: 1500,
             child: ElevatedButton(
@@ -96,15 +99,15 @@ class _LoginFormState extends State<LoginForm> {
                 shape: StadiumBorder(),
                 primary: color_green,
                 padding: EdgeInsets.symmetric(
-                  horizontal: 125,
-                  vertical: 10,
+                  horizontal: 100,
+                  vertical: 8,
                 ),
               ),
               child: Text(
                 'Connexion',
                 style: GoogleFonts.poppins(
                   color: Colors.white,
-                  fontSize: 15,
+                  fontSize: 13,
                   fontWeight: FontWeight.w500,
                 ),
               ),

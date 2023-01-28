@@ -38,7 +38,7 @@ class _RegisterPageState extends State<RegisterPage> {
             children: [
               DelayedAnimation(delay: 500,
                   child: Container(
-                    height: 250,
+                    height: 170,
                     child: Image.asset('images/connexion_logo.png'),
                   )
               ),
@@ -65,7 +65,7 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
 
               RegisterForm(),
-              SizedBox(height: 20),
+
 
 
             ],

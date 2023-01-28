@@ -13,6 +13,7 @@ class _RegisterFormState extends State<RegisterForm> {
   var _obscureText = true;
   final GlobalKey<FormState> _formKey= GlobalKey<FormState>();
   final color_green = const Color(0xFF427577);
+  RegExp regex = RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
   var _username="";
    var _email="";
 
@@ -26,6 +27,11 @@ class _RegisterFormState extends State<RegisterForm> {
     }else{
       return 'Merci de remplir le formumaire de connexion ';
     }
+  }
+
+  String? _validatePassword(String value) {
+    RegExp regex =
+    RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
   }
 
 
@@ -46,6 +52,7 @@ class _RegisterFormState extends State<RegisterForm> {
               decoration: InputDecoration(
                 labelText: 'Username',
                 labelStyle: TextStyle(
+                  fontSize: 13,
                   color: Colors.grey[400],
                 ),
               ),
@@ -69,13 +76,13 @@ class _RegisterFormState extends State<RegisterForm> {
             ),
           ),
 
-          SizedBox(height: 10),
           DelayedAnimation(
             delay: 2000,
             child: TextFormField(
               decoration: InputDecoration(
                 labelText: 'Email',
                 labelStyle: TextStyle(
+                  fontSize: 13,
                   color: Colors.grey[400],
                 ),
               ),
@@ -94,7 +101,7 @@ class _RegisterFormState extends State<RegisterForm> {
               },
             ),
           ),
-          SizedBox(height: 10),
+
           DelayedAnimation(
             delay: 2500,
             child: TextFormField(
@@ -102,6 +109,7 @@ class _RegisterFormState extends State<RegisterForm> {
               obscureText: _obscureText,
               decoration: InputDecoration(
                 labelStyle: TextStyle(
+                  fontSize: 13,
                   color: Colors.grey[400],
                 ),
                 labelText: 'Mot de passe',
@@ -121,7 +129,9 @@ class _RegisterFormState extends State<RegisterForm> {
                 if(value!.isEmpty){
                   return "Le champs Mot de passe est vide";
                 }
-
+                if (!regex.hasMatch(value)) {
+                return 'Enter valid password';
+                }
                 return null;
               },
 
@@ -134,6 +144,7 @@ class _RegisterFormState extends State<RegisterForm> {
               obscureText: _obscureText,
               decoration: InputDecoration(
                 labelStyle: TextStyle(
+                  fontSize: 13,
                   color: Colors.grey[400],
                 ),
                 labelText: 'Confirmer mot de passe',
@@ -150,34 +161,37 @@ class _RegisterFormState extends State<RegisterForm> {
                 ),
               ),
               validator: (value) {
-                if(value!.isEmpty){
-                  return "Le champs Username est vide";
-                }
-             if( _password.text != _confirmPassword){
-               return "Ces mots de passe ne correspondent pas. Veuillez réessayer";
-             }
 
+                if(value!.isEmpty ||value.length<7){
+                  return "Le champs Username est vide ou trop cours";
+                }
+
+              if(_password.text != _confirmPassword.text){
+                 return "Ces mots de passe ne correspondent pas. Veuillez réessayer";
+               }
                 return null;
-              },
+             },
 
             ),
           ),
+          SizedBox(height: 25),
           DelayedAnimation(
+
             delay: 1500,
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
                 shape: StadiumBorder(),
                 primary: color_green,
                 padding: EdgeInsets.symmetric(
-                  horizontal: 125,
-                  vertical: 13,
+                  horizontal: 100,
+                  vertical: 8,
                 ),
               ),
               child: Text(
                 'Envoyer',
                 style: GoogleFonts.poppins(
                   color: Colors.white,
-                  fontSize: 15,
+                  fontSize: 13,
                   fontWeight: FontWeight.w500,
                 ),
               ),
