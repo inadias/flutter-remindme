@@ -13,11 +13,10 @@ var _repository;
   saveCreatedCategorie(Categorie categorie) async{
     return await _repository.insertData('categories',categorie.categorieMap());
 
-
   }
   readCategories(Categorie categorie)async{
 
-    return await _repository.readeData('categories');
+    return await _repository.readData('categories');
   }
 
 }

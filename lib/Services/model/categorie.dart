@@ -1,7 +1,3 @@
-
-
-
-
 class Categorie {
 
  var id;

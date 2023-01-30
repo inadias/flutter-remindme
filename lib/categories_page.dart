@@ -11,7 +11,9 @@ class CategoriesPage extends StatefulWidget {
 
 class _CategoriesPageState extends State<CategoriesPage> {
   var _categorie = Categorie();
-  var _categorie_service = CategorieService();
+  var _categorieService = CategorieService();
+
+
   var _categorieController = TextEditingController();
   var _descriptionController = TextEditingController();
 
@@ -23,8 +25,8 @@ class _CategoriesPageState extends State<CategoriesPage> {
     getAllCategories();
   }
   getAllCategories()async{
-       List<Categorie>_categorieList =<Categorie>[];
-    var allCategorie = await _categorie_service.readCategories(_categorie);
+       _categorieList =<Categorie>[];
+    var allCategorie = await _categorieService.readCategories(_categorie);
     allCategorie.forEach((categorie)=>{
 
       setState((){
@@ -59,7 +61,7 @@ class _CategoriesPageState extends State<CategoriesPage> {
                 onPressed: () async{
                   _categorie.name=_categorieController.text;
                   _categorie.description=_descriptionController.text;
-                  var resultat = await _categorie_service.saveCreatedCategorie(_categorie);
+                  var resultat = await _categorieService.saveCreatedCategorie(_categorie);
                     print(resultat);
 
                 },

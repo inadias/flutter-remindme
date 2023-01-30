@@ -10,6 +10,7 @@ class Repository{
 
   Future<Database?>get database async{
     if(_database != null )return _database;
+
     _database = await _databaseConnexion.setDatabase();
     return _database;
   }
@@ -21,18 +22,8 @@ class Repository{
   }
 
   readData(table)async{
-    final db = await database;
-    final List<Map<String, dynamic>> maps = await db!.query(table);
-    return List.generate(maps.length, (i) {
-      return table(
-        id: maps[i]['id'],
-        name: maps[i]['name'],
-        age: maps[i]['description'],
-
-      );
-    });
-
-    //return await db!.query(table);
+    final connection = await database;
+    return await connection!.query(table);
   }
 
 
