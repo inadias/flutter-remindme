@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:remind_me/animation_delay.dart';
 import 'package:remind_me/login_form.dart';
 import 'package:remind_me/main.dart';
+import 'package:remind_me/todo_list.dart';
 import 'package:remind_me/registration_page.dart';
 
 
@@ -101,7 +102,7 @@ class _LoginPageState extends State<LoginPage> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => RegisterPage(),
+                      builder: (context) => MovieList(),
                     ),
                   );
                 },

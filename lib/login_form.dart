@@ -16,7 +16,7 @@ class _LoginFormState extends State<LoginForm> {
 
   _checkLoginValue(){
     if(_formKey.currentState!.validate()){
-      return;
+      return ;
     }else{
       return 'Merci de remplir le formumaire de connexion ';
     }
@@ -25,12 +25,14 @@ class _LoginFormState extends State<LoginForm> {
   final GlobalKey<FormState> _formKey= GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.symmetric(
-        horizontal: 30,
+    return
+        Container(
+          margin: EdgeInsets.symmetric(
+          horizontal: 30,
       ),
-  child: Form(
-    key: _formKey,
+
+    child: Form(
+      key: _formKey,
       child: Column(
         children: [
           DelayedAnimation(
@@ -112,11 +114,15 @@ class _LoginFormState extends State<LoginForm> {
                 ),
               ),
               onPressed: _checkLoginValue,
+
             ),
           ),
         ],
       ),
   ),
+
     );
+
+
   }
 }

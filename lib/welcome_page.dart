@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:remind_me/animation_delay.dart';
 import 'package:remind_me/login_page.dart';
 import 'package:remind_me/main.dart';
+import 'package:remind_me/todo_list.dart';
 
 
 class WelcomePage extends StatefulWidget {
@@ -76,7 +77,7 @@ class _WelcomePageState extends State<WelcomePage> {
                   width: double.infinity,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      primary:color_red,
+                      
                       shape: StadiumBorder(),
                       padding: EdgeInsets.all(13)
                       
@@ -98,6 +99,7 @@ class _WelcomePageState extends State<WelcomePage> {
           ),
         ),
       ),
+      drawer: MovieList(),
     );
   }
 }

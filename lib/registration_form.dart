@@ -33,6 +33,12 @@ class _RegisterFormState extends State<RegisterForm> {
     RegExp regex =
     RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
   }
+  @override
+  void dispose() {
+    _password.dispose();
+    _confirmPassword.dispose();
+    super.dispose();
+  }
 
 
   @override
@@ -48,6 +54,7 @@ class _RegisterFormState extends State<RegisterForm> {
           DelayedAnimation(
             delay: 2000,
             child: TextFormField(
+
 
               decoration: InputDecoration(
                 labelText: 'Username',
@@ -67,7 +74,6 @@ class _RegisterFormState extends State<RegisterForm> {
                   return " La valeur entrée est trop courte";
                 }
 
-
                 return null;
               },
               onSaved: (value) {
@@ -79,6 +85,8 @@ class _RegisterFormState extends State<RegisterForm> {
           DelayedAnimation(
             delay: 2000,
             child: TextFormField(
+
+              textCapitalization: TextCapitalization.none,
               decoration: InputDecoration(
                 labelText: 'Email',
                 labelStyle: TextStyle(
@@ -105,6 +113,7 @@ class _RegisterFormState extends State<RegisterForm> {
           DelayedAnimation(
             delay: 2500,
             child: TextFormField(
+              keyboardType: TextInputType.visiblePassword,
               controller: _password,
               obscureText: _obscureText,
               decoration: InputDecoration(
@@ -162,13 +171,13 @@ class _RegisterFormState extends State<RegisterForm> {
               ),
               validator: (value) {
 
-                if(value!.isEmpty ||value.length<7){
-                  return "Le champs Username est vide ou trop cours";
-                }
 
               if(_password.text != _confirmPassword.text){
                  return "Ces mots de passe ne correspondent pas. Veuillez réessayer";
                }
+                if(value!.isEmpty ||value.length<7){
+                  return "Le champs Mot de passe est vide ou trop cours";
+                }
                 return null;
              },
 
