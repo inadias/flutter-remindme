@@ -19,4 +19,9 @@ var _repository;
     return await _repository.readData('categories');
   }
 
+  readCategoriesByID(categorieId) async {
+    return await _repository.readDataById('categories',categorieId);
+
+  }
+
 }

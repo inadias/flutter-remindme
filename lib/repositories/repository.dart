@@ -26,5 +26,11 @@ class Repository{
     return await connection!.query(table);
   }
 
+  readDataById(String table,itemId) async {
+    final connection = await database;
+    return await connection!.query(table,where: 'id=?', whereArgs: [itemId]);
+
+  }
+
 
 }
