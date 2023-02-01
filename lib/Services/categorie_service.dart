@@ -24,4 +24,13 @@ var _repository;
 
   }
 
+  updateCategorie(Categorie categorie) async{
+    return await _repository.updateData('categories',categorie.categorieMap());
+  }
+
+  deleteCategorie(categorieId) async{
+    return await _repository.deleteData('categories',categorieId);
+
+  }
+
 }
