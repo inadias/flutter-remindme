@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'animation_delay.dart';
+
 import 'package:remind_me/welcome_page.dart';
 const color_red = const Color(0xFFE9717D);
 const color_green = const Color(0xFF427577);

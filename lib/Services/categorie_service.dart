@@ -14,7 +14,7 @@ var _repository;
     return await _repository.insertData('categories',categorie.categorieMap());
 
   }
-  readCategories(Categorie categorie)async{
+  readCategories()async{
 
     return await _repository.readData('categories');
   }

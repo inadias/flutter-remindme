@@ -37,7 +37,7 @@ class _CategoriesPageState extends State<CategoriesPage> {
 
   getAllCategories()async{
        _categorieList =<Categorie>[];
-    var allCategorie = await _categorieService.readCategories(_categorie);
+    var allCategorie = await _categorieService.readCategories();
     allCategorie.forEach((categorie)=>{
 
       setState((){
@@ -245,7 +245,7 @@ class _CategoriesPageState extends State<CategoriesPage> {
                 onPressed: () async{
 
                   var resultat = await _categorieService.deleteCategorie(categorieId);
-                  if(resultat > 0){
+                  if(resultat >= 0){
                     Navigator.pop(context);
                     getAllCategories();
                     ScaffoldMessenger.of(context).showSnackBar(

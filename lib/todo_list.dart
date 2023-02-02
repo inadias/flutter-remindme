@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:remind_me/drawer.dart';
+import 'package:remind_me/to_do_list_page.dart';
 class MovieList extends StatefulWidget {
   const MovieList({Key? key}) : super(key: key);
 
@@ -17,6 +18,8 @@ class _MovieListState extends State<MovieList> {
           title: Text("Liste"),
         ),
         drawer: DrawerNavigator(),
+        floatingActionButton:FloatingActionButton( onPressed: ()=>Navigator.of(context).push(MaterialPageRoute(builder: (context) => TodoPage(),))
+          ,child: Icon(Icons.add),),
 
 
 
