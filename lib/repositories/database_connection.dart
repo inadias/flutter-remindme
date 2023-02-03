@@ -18,6 +18,12 @@ class DatabaseConnexion {
   _creatingDatabase(Database database, int version) async {
     await database.execute(
         "CREATE TABLE categories(id INTEGER PRIMARY KEY, name TEXT, description TEXT)");
+
+    //inserer des données dans le todolist dans la base de données
+    await database.execute(
+        "CREATE TABLE todo(id INTEGER PRIMARY KEY, titre TEXT, description TEXT,categorie TEXT, todoDate TEXT, isFinished INTEGER )");
+
+
   }
 }
 /*
