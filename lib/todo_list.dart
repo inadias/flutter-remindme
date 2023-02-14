@@ -3,14 +3,14 @@ import 'package:remind_me/Services/model/todo.dart';
 import 'package:remind_me/Services/todo_service.dart';
 import 'package:remind_me/drawer.dart';
 import 'package:remind_me/to_do_list_page.dart';
-class MovieList extends StatefulWidget {
-  const MovieList({Key? key}) : super(key: key);
+class TodoList extends StatefulWidget {
+  const TodoList({Key? key}) : super(key: key);
 
   @override
-  State<MovieList> createState() => _MovieListState();
+  State<TodoList> createState() => _TodoListState();
 }
 
-class _MovieListState extends State<MovieList> {
+class _TodoListState extends State<TodoList> {
 
 
   @override
@@ -64,9 +64,8 @@ class _MovieListState extends State<MovieList> {
               ],
 
           ),
-              subtitle: Text(_todoList[index].categorie ??" Pas de cotégorie"),
-              trailing: Text(_todoList[index].tododate ??" Pas de date"
-              ),
+              subtitle: Text(_todoList[index].categorie ?? " Pas de cotégorie"),
+              trailing: Text(_todoList[index].tododate ?? " Pas de date"),
             )
               );
 

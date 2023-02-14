@@ -15,12 +15,10 @@ class TodoPage extends StatefulWidget {
 }
 
 class _TodoPageState extends State<TodoPage> {
-  var toDoTitleController = TextEditingController();
-
-  var toDoDescriptionController = TextEditingController();
-
-  var toDoDateController = TextEditingController();
-  var toDodCategorieController = TextEditingController();
+  final _toDoTitleController = TextEditingController();
+  final _toDoDescriptionController = TextEditingController();
+  final _toDoDateController = TextEditingController();
+  var _selectedValue;
 
   @override
   void initState(){
@@ -29,9 +27,9 @@ class _TodoPageState extends State<TodoPage> {
 
   }
 
-  var _selectedValue;
+
  // ignore: prefer_collection_literals
-var _categories = <DropdownMenuItem>[];
+final _categories = <DropdownMenuItem>[];
 
 // liste déroulante
   _loadCategorie() async {
@@ -40,21 +38,28 @@ var _categories = <DropdownMenuItem>[];
     categories.forEach((categorie){
       setState(() {
         _categories.add(DropdownMenuItem(
-          child: Text(categorie['name']),
           value: categorie['name'],
+          child: Text(categorie['name']),
         ));
       });
     });
 
   }
+
   DateTime _dateTime= DateTime.now();
   _selectedTodoDate(BuildContext context) async{
-    var _pickDate= await showDatePicker(context: context, initialDate: _dateTime, firstDate: DateTime(2012), lastDate: DateTime(2050));
-    if (_pickDate!=null){
+      var pickDate= await showDatePicker(
+        context: context,
+        initialDate: _dateTime,
+        firstDate: DateTime(1900),
+        lastDate: DateTime(2100)
+      );
+    if (pickDate != null){
       setState(() {
-        _dateTime=_pickDate;
-        toDoDateController.text=DateFormat('dd-MM-yyyy').format(_dateTime);
-      });
+        _toDoDateController.text= DateFormat('dd-MM-yyyy').format(pickDate);
+        _dateTime=pickDate;
+      }
+      );
 
     }
   }
@@ -70,34 +75,39 @@ var _categories = <DropdownMenuItem>[];
         child: SingleChildScrollView(
           child: Column(
             children: <Widget>[
-              TextField(
-                controller: toDoTitleController,
-                decoration: InputDecoration(
 
+              TextField(
+                controller: _toDoTitleController,
+                decoration: InputDecoration(
                   labelText: 'Titre',
                   hintText: 'Saisir un titre' ,
                 ) ,
               ),
+
               TextField(
-                controller: toDoDescriptionController,
+                controller: _toDoDescriptionController,
                 decoration: InputDecoration(
                   labelText: 'Description',
                   hintText: 'Plus de details' ,
                 ) ,
               ),
-              TextField(
-                controller: toDoDateController,
-                decoration: InputDecoration(
-                  labelText: 'Date',
-                  hintText: 'Saisir une date' ,
-                  prefixIcon: InkWell(
-                    onTap: (){
-                      _selectedTodoDate(context);
-                    },
-                    child: Icon(Icons.calendar_today),
-                  )
-                ) ,
+
+              Material(
+                child: TextField(
+                  controller: _toDoDateController,
+                  decoration: InputDecoration(
+                    labelText: 'Date',
+                    hintText: 'Saisir une date' ,
+                    prefixIcon: InkWell(
+                      onTap: (){
+                        _selectedTodoDate(context);
+                      },
+                      child: const Icon(Icons.calendar_today),
+                    )
+                  ) ,
+                ),
               ),
+
               DropdownButtonFormField(
                   value:_selectedValue,
                   items:_categories,
@@ -133,14 +143,17 @@ var _categories = <DropdownMenuItem>[];
                   onPressed:()async {
                     var todo=Todo();
 
-                    todo.titre=toDoTitleController.text;
-                    todo.description=toDoDescriptionController.text;
-                    todo.categorie=toDodCategorieController.toString();
-                    todo.tododate=toDoDateController.text;
+                    todo.titre=_toDoTitleController.text;
+                    todo.description=_toDoDescriptionController.text;
+                    todo.categorie=_selectedValue.toString();
+                    todo.tododate=_toDoDateController.text;
                     todo.isFinished=0;
+                    print(todo.tododate);
                     var todoService = TodoService();
                     var resultat= await todoService.saveCreatedTodo(todo);
+                    print(_toDoDateController);
                     if(resultat>0){
+                      Navigator.pop(context);
                       ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             content: Text("La creation a été prise en compte "),
