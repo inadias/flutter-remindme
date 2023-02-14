@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:remind_me/animation_delay.dart';
-import 'package:remind_me/login_page.dart';
+//import 'package:remind_me/login_page.dart';
 import 'package:remind_me/main.dart';
 import 'package:remind_me/todo_list.dart';
 

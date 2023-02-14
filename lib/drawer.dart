@@ -31,7 +31,7 @@ class _DrawerNavigatorState extends State<DrawerNavigator> {
               onTap: ()=> Navigator.of(context).push(MaterialPageRoute(builder: (context)=>WelcomePage())),
             ),
             ListTile(
-              leading: Icon(Icons.home),
+              leading: Icon(Icons.category),
               title: Text("Categories"),
               onTap: ()=> Navigator.of(context).push(MaterialPageRoute(builder: (context)=>CategoriesPage())),
             )
