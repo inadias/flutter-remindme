@@ -85,7 +85,7 @@ class _WelcomePageState extends State<WelcomePage> {
                     child: Text('Commencer'),
                     onPressed: (){
                       Navigator.push(context,
-                          MaterialPageRoute(builder: (context)=>LoginPage()),);
+                          MaterialPageRoute(builder: (context)=>TodoList()),);
 
                     },
                   ),
