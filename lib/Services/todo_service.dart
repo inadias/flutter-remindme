@@ -15,8 +15,8 @@ var _repository;
     return await _repository.insertData('todo',todo.todoMap());
 
   }
-  readTodo()async{
 
+  Future<List<Map<String, dynamic>>> readTodo() async {
     return await _repository.readData('todo');
   }
 

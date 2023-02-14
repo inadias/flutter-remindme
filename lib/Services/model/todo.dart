@@ -1,10 +1,19 @@
 class Todo{
-  var id;
-  var titre;
-  var description;
-  var categorie;
-  var tododate;
-  var isFinished;
+  int? id;
+  String? titre;
+  String? description;
+  String? categorie;
+  String? tododate;
+  int? isFinished;
+
+  Todo({
+    this.id,
+    this.titre,
+    this.description,
+    this.categorie,
+    this.tododate,
+    this.isFinished,
+  });
 
 
   todoMap(){
@@ -19,6 +28,4 @@ class Todo{
     return mapping;
 
   }
-
-
 }

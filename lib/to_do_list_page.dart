@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:remind_me/Services/categorie_service.dart';
@@ -7,8 +5,12 @@ import 'package:remind_me/Services/model/todo.dart';
 import 'package:remind_me/Services/todo_service.dart';
 import 'package:remind_me/animation_delay.dart';
 import 'package:intl/intl.dart';
+
+typedef void TodoCreatedCallback(Todo todo);
+
 class TodoPage extends StatefulWidget {
-  const TodoPage({Key? key}) : super(key: key);
+  final TodoCreatedCallback onTodoCreated;
+  const TodoPage({Key? key, required this.onTodoCreated}) : super(key: key);
 
   @override
   State<TodoPage> createState() => _TodoPageState();
@@ -140,32 +142,30 @@ final _categories = <DropdownMenuItem>[];
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-                  onPressed:()async {
-                    var todo=Todo();
+                  onPressed: () async {
+                    var todo = Todo();
 
-                    todo.titre=_toDoTitleController.text;
-                    todo.description=_toDoDescriptionController.text;
-                    todo.categorie=_selectedValue.toString();
-                    todo.tododate=_toDoDateController.text;
-                    todo.isFinished=0;
-                    print(todo.tododate);
+                    todo.titre = _toDoTitleController.text;
+                    todo.description = _toDoDescriptionController.text;
+                    todo.categorie = _selectedValue.toString();
+                    todo.tododate = _toDoDateController.text;
+                    todo.isFinished = 0;
+
                     var todoService = TodoService();
-                    var resultat= await todoService.saveCreatedTodo(todo);
-                    print(_toDoDateController);
-                    if(resultat>0){
-                      Navigator.pop(context);
+                    var resultat = await todoService.saveCreatedTodo(todo);
+
+                    if (resultat > 0) {
                       ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text("La creation a été prise en compte "),
-                            backgroundColor: Colors.green[400],
-                            elevation: 10, //shadow
-                          )
+                        SnackBar(
+                          content: Text("La création a été prise en compte"),
+                          backgroundColor: Colors.green[400],
+                          elevation: 10, //shadow
+                        ),
                       );
+                      widget.onTodoCreated(todo);
+                      Navigator.pop(context);
                     }
-
-
-                  }
-
+                  },
                 ),
               ),
 
