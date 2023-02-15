@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:remind_me/categories_page.dart';
+import 'package:remind_me/todo_list.dart';
 import 'package:remind_me/welcome_page.dart';
 
 
@@ -27,8 +28,8 @@ class _DrawerNavigatorState extends State<DrawerNavigator> {
               BoxDecoration(color: Colors.blue),
             ),ListTile(
               leading: Icon(Icons.home),
-              title: Text("Accueil"),
-              onTap: ()=> Navigator.of(context).push(MaterialPageRoute(builder: (context)=>WelcomePage())),
+              title: Text("Liste des tâches"),
+              onTap: ()=> Navigator.of(context).push(MaterialPageRoute(builder: (context)=>TodoList())),
             ),
             ListTile(
               leading: Icon(Icons.category),
