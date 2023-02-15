@@ -90,7 +90,8 @@ class _CategoriesPageState extends State<CategoriesPage> {
                   var resultat = await _categorieService.saveCreatedCategorie(_categorie);
                   Navigator.pop(context);
                   if(resultat > 0){
-                    Navigator.pop(context);
+                    Navigator.push(context,
+                      MaterialPageRoute(builder: (context)=>CategoriesPage()),);
                     getAllCategories();
                     ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
