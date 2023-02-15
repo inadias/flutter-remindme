@@ -74,7 +74,9 @@ class _CategoriesPageState extends State<CategoriesPage> {
             actions: <Widget>[
               TextButton(
 
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pop(context);
+                },
                 child: Text('Cancel',style: TextStyle(
                   color: Colors.red
                 ),),
